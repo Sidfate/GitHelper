@@ -1,6 +1,9 @@
 from git_helper import GitHelper
 
 
+class GHelp:
+    def __init__(self):
+        pass
 
 
 
