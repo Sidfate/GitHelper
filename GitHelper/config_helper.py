@@ -32,12 +32,15 @@ class ConfigHelper:
             self.config.pop(name)
             self.rewrite()
 
+    def get(self):
+        return self.config
+
     def rewrite(self):
         tmp = open(self.filename, 'w')
         tmp.write(json.dumps(self.config))
         tmp.close()
 
 
-if __name__ == '__main__':
-    helper = ConfigHelper()
-    helper.save('test2', "D:\sidfate\git\FuckingTime", "master", "master")
+# if __name__ == '__main__':
+#     helper = ConfigHelper()
+#     helper.save('test2', "D:\sidfate\git\FuckingTime", "master", "master")
