@@ -16,7 +16,6 @@ to_branch=%s
 
     def __init__(self):
         self.config = ConfigHelper()
-        self.git = GitHelper('D:\sidfate\git\FuckingTime')
 
         parser = argparse.ArgumentParser(prog='ghelp', usage='%(prog)s [--version] [-c namespace] [namespace]')
         parser.add_argument('namespace', nargs='*', help='execute namespace\'s action')
@@ -31,8 +30,9 @@ to_branch=%s
         if self.args.namespace is not None:
             config = self.get_config(self.args.namespace[0])
             config['comment'] = self.args.namespace[1]
-            self.git.push_remote(**config)
-            self.end('execute the action')
+            git_helper = GitHelper(config['root_dir'])
+            git_helper.push_remote(**config)
+            self.end('Finished!')
 
     def config_handler(self):
         if self.args.config is None:

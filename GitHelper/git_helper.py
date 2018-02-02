@@ -53,14 +53,13 @@ class GitHelper:
                 'path': self.file_path
             }
             self.cmd_log.append(log)
-            print(out)
             return out
         except subprocess.CalledProcessError as e:
             self.error(command, e)
 
     """错误处理"""
     def error(self, command, e):
-        message = '[' + command + '] end with a error return code\n'+str(e.returncode)+"xxxx"+str(e.output)
+        message = '[' + command + '] end with a error return code '+str(e.returncode)+"xxxx"+str(e.output)
         self.exit(message)
 
     """成功处理"""
@@ -86,8 +85,10 @@ class GitHelper:
 
     def push_remote(self, **kwargs):
         self.call(['cd', kwargs['root_dir']])
+        self.checkout(kwargs['from_branch'])
         self.pull()
         self.commit(kwargs['comment'])
+        self.checkout(kwargs['to_branch'])
         pass
 
 
