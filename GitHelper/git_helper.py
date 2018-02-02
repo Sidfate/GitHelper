@@ -17,7 +17,7 @@ class GitHelper:
 
     def status(self):
         out = self.call(['git', 'status'])
-        print((out))
+        print(out)
 
     """提交修改"""
     def commit(self, comment):
@@ -53,6 +53,7 @@ class GitHelper:
                 'path': self.file_path
             }
             self.cmd_log.append(log)
+            print(out)
             return out
         except subprocess.CalledProcessError as e:
             self.error(command, e)
@@ -82,4 +83,11 @@ class GitHelper:
             if isinstance(command, list):
                 command = ' '.join(command)
             print('[' + command + ']\n'+log['output'])
+
+    def push_remote(self, **kwargs):
+        self.call(['cd', kwargs['root_dir']])
+        self.pull()
+        self.commit(kwargs['comment'])
+        pass
+
 

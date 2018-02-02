@@ -18,22 +18,22 @@ class ConfigHelper:
         self.config = json.loads(tmp.read())
         tmp.close()
 
-    def save(self, name, root_dir, from_branch, to_branch):
-        self.config[name] = {
-            'name': name,
+    def save(self, namespace, root_dir, from_branch, to_branch):
+        self.config[namespace] = {
+            'namespace': namespace,
             'root_dir': root_dir,
             'from_branch': from_branch,
             'to_branch': to_branch
         }
         self.rewrite()
 
-    def delete(self, name):
-        if self.config.has_key(name):
-            self.config.pop(name)
+    def delete(self, namespace):
+        if namespace in self.config:
+            self.config.pop(namespace)
             self.rewrite()
 
-    def get(self):
-        return self.config
+    def get(self, namespace=None):
+        return self.config if (namespace is None) else (self.config[namespace] if (namespace in self.config) else None)
 
     def rewrite(self):
         tmp = open(self.filename, 'w')
