@@ -27,7 +27,10 @@ class ConfigHelper:
         }
         self.rewrite()
 
-    def delete(self, namespace):
+    def delete(self, namespace=None):
+        if namespace is None:
+            self.config = {}
+            self.rewrite()
         if namespace in self.config:
             self.config.pop(namespace)
             self.rewrite()

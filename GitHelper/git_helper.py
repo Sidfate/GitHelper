@@ -43,6 +43,10 @@ class GitHelper:
         self.current_branch = str(current_branch.strip())
         return self.current_branch
 
+    """合并分支"""
+    def merge(self, branch):
+        self.call('git merge --no-commit '+branch)
+
     """调用命令"""
     def call(self, command):
         try:
@@ -83,12 +87,18 @@ class GitHelper:
                 command = ' '.join(command)
             print('[' + command + ']\n'+log['output'])
 
+    """跨分支发布"""
     def push_remote(self, **kwargs):
         self.call(['cd', kwargs['root_dir']])
         self.checkout(kwargs['from_branch'])
         self.pull()
         self.commit(kwargs['comment'])
+        self.push()
         self.checkout(kwargs['to_branch'])
+        self.pull()
+        self.merge(kwargs['from_branch'])
+        self.push()
+        self.checkout(kwargs['from_branch'])
         pass
 
 
