@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='git-helper',
-    version='1.0.2',
+    version='1.0.3',
     keywords=('git'),
     description='a git tool to push for multi projects',
     license='MIT License',

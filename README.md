@@ -47,6 +47,7 @@ optional arguments:
 * namespace: generally the project name
 * from_branch: the local raw branch
 * to_branch: the remote target branch
+
 The created namespace will be saved into one local file(push.json) which is formatted with json.
 
 ```shell
@@ -57,6 +58,8 @@ Input the local raw branch:lumen
 Input the origin target branch:release-2.0.0
 Create a new namespace(gstore).
 ```
+
+
 
 ### ghelp namespace [message]
 

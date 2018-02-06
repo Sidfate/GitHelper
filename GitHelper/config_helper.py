@@ -3,13 +3,14 @@
 import os
 import codecs
 import json
+import sys
 
 
 class ConfigHelper:
     filename = "push.json"
 
     def __init__(self):
-
+        os.chdir(os.path.dirname(os.path.realpath(__file__)))
         if not os.path.isfile(self.filename):
             tmp = codecs.open('push.json', 'x', 'utf-8')
             tmp.write(json.dumps({}))
