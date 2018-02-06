@@ -44,8 +44,10 @@ class GitHelper:
         return self.current_branch
 
     """合并分支"""
-    def merge(self, branch):
-        self.call('git merge --no-commit '+branch)
+    def merge(self, from_branch, to_branch):
+        message = 'Merge %s into %s' % (from_branch, to_branch)
+        print('git merge -m "%s" %s' % (message, from_branch))
+        self.call('git merge -m "%s" %s' % (message, from_branch))
 
     """调用命令"""
     def call(self, command):
@@ -95,7 +97,7 @@ class GitHelper:
         self.push()
         self.checkout(kwargs['to_branch'])
         self.pull()
-        self.merge(kwargs['from_branch'])
+        self.merge(kwargs['from_branch'], kwargs['to_branch'])
         self.push()
         self.checkout(kwargs['from_branch'])
         pass

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='git-helper',
-    version='1.0.1',
+    version='1.0.2',
     keywords=('git'),
     description='a git tool to push for multi projects',
     license='MIT License',
@@ -10,7 +10,7 @@ setup(
 
     author='sidfate',
     author_email='sidfate@163.com',
-    url='https://sidfate.com',
+    url='https://github.com/Sidfate/GitHelper',
 
     packages=find_packages(),
     platforms='any',
