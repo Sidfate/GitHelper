@@ -1,7 +1,7 @@
 # !/usr/bin/env python
 # encoding: utf-8
-from config_helper import ConfigHelper
-from git_helper import GitHelper
+from GitHelper.config_helper import ConfigHelper
+from GitHelper.git_helper import GitHelper
 import argparse
 import sys
 
@@ -18,12 +18,11 @@ to_branch=%s
         self.config = ConfigHelper()
         self.parser = self.init_parser()
         self.args = self.parser.parse_args()
-        print(self.args)
 
     def execute(self):
-        if self.args.namespace is not None:
+        if self.args.namespace is not None and len(self.args.namespace) > 0:
             config = self.get_config(self.args.namespace[0])
-            config['comment'] = self.args.namespace[1]
+            config['comment'] = self.args.namespace[1] if len(self.args.namespace) > 1 else 'update'
             git_helper = GitHelper(config['root_dir'])
             git_helper.push_remote(**config)
             self.end('Finished!')
@@ -132,8 +131,3 @@ to_branch=%s
         parser.add_argument('-v', '--version', action='version', version='%(prog)s 1.0.0')
         return parser
 
-
-if __name__ == '__main__':
-
-    core = Core()
-    core.parse()

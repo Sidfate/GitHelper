@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='git_helper',
-    version='1.0.0',
+    name='git-helper',
+    version='1.0.1',
     keywords=('git'),
     description='a git tool to push for multi projects',
     license='MIT License',
@@ -16,7 +16,7 @@ setup(
     platforms='any',
     entry_points={
         'console_scripts': [     #如果你想要以Linux命令的形式使用
-            'ghelp = GitHelper.main:main'
+            'ghelp = GitHelper.command:command_execute'
         ]
       },
 )
