@@ -53,17 +53,18 @@ class GitHelper:
             out = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT, cwd=self.file_path)
             log = {
                 'command': command,
-                'output': str(out),
+                'output': str(out.decode()),
                 'path': self.file_path
             }
             self.cmd_log.append(log)
+            print(out.decode())
             return out
         except subprocess.CalledProcessError as e:
             self.error(command, e)
 
     """错误处理"""
     def error(self, command, e):
-        message = '[' + command + '] end with a error return code '+str(e.returncode)+"xxxx"+str(e.output)
+        message = '[' + command + '] end with a error return code '+str(e.returncode)+"\n"+str(e.output.decode())
         self.exit(message)
 
     """成功处理"""
@@ -76,8 +77,6 @@ class GitHelper:
             sys.exit(0)
         except:
             print(message)
-        finally:
-            print('git helper exited.')
 
     """输出日志"""
     def history(self):
