@@ -1,10 +1,14 @@
 from setuptools import setup, find_packages
 
+with open('README.rst') as f_readme:
+    readme = f_readme.read()
+
 setup(
     name='git-helper',
-    version='1.0.3',
+    version='1.0.5',
     keywords=('git'),
     description='a git tool to push for multi projects',
+    long_description=readme,
     license='MIT License',
     install_requires=[],
 
