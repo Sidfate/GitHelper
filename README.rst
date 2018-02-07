@@ -50,9 +50,11 @@ type the ``ghelp`` in shell you can see all the usage of this command.
 ghelp -a,-add
 ~~~~~~~~~~~~~
 
-``ghelp -a`` creates a new namespace.That will receive three params: \*
-namespace: generally the project name \* from\_branch: the local raw
-branch \* to\_branch: the remote target branch
+``ghelp -a`` creates a new namespace.That will receive three params:
+
+- namespace: generally the project name
+- from\_branch: the local raw branch
+- to\_branch: the remote target branch
 
 The created namespace will be saved into one local file(push.json) which
 is formatted with json.
@@ -61,7 +63,7 @@ is formatted with json.
 
     $ ghelp -a
     Input the namespace name:gstore
-    Input namespace's root directory:D:\work\GStore
+    Input root directory of namespace:D:\work\GStore
     Input the local raw branch:lumen
     Input the origin target branch:release-2.0.0
     Create a new namespace(gstore).

@@ -78,7 +78,7 @@ to_branch=%s
             return
 
         namespace = input("Input the namespace name:")
-        root_dir = input("Input namespace's root directory:")
+        root_dir = input("Input root directory of namespace:")
         from_branch = input("Input the local raw branch:")
         to_branch = input("Input the origin target branch:")
         self.save_config(namespace=namespace, root_dir=root_dir, from_branch=from_branch, to_branch=to_branch)

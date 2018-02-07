@@ -5,7 +5,7 @@ with open('README.rst') as f_readme:
 
 setup(
     name='git-helper',
-    version='1.0.5',
+    version='1.0.6',
     keywords=('git'),
     description='a git tool to push for multi projects',
     long_description=readme,
