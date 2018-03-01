@@ -92,8 +92,8 @@ class GitHelper:
     def push_remote(self, **kwargs):
         self.call(['cd', kwargs['root_dir']])
         self.checkout(kwargs['from_branch'])
-        self.pull()
         self.commit(kwargs['comment'])
+        self.pull()
         self.push()
         self.checkout(kwargs['to_branch'])
         self.pull()
